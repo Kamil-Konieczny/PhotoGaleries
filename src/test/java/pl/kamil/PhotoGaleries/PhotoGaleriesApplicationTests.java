@@ -1,0 +1,13 @@
+package pl.kamil.PhotoGaleries;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class PhotoGaleriesApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
