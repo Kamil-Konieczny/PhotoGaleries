@@ -15,7 +15,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#347ab6;">
     <div class="container-fluid">
         <div class="navbar-header" >
-            <a class="navbar-brand" href="#" th:href="@{/}" style="color:white;">
+            <a class="navbar-brand" href="#" th:href="@{/admin}" style="color:white;">
 
                 <span th:text="${#authentication.getPrincipal().getUser_name()}"></span>
             </a>
@@ -27,14 +27,19 @@
         </div>
     </div>
 </nav>
-<div class="galleryContainer2">
-    <h1 th:text="${galleryName}" style="padding-left: 40%;"></h1>
-    <div class="gallery" th:each = "photo:${photosList}">
-        <a target="_blank" >
-            <img th:src="@{'data:image/jpeg;base64,'+${photo.getPhoto()}}"  width="800" height="600">
-        </a>
-        <div class="desc" ><span  th:text="${photo.getPhotoName()}"/></div>
-    </div>
-</div>
+<table style = "margin-top:15%;margin-left:35%;font-size:22px;" border="1">
+    <tr >
+        <td>Name: </td>
+        <td>Login: </td>
+        <td>Password: </td>
+        <td>Role: </td>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.name}  ">Name: </td>
+        <td th:text="${user.login}  ">Login: </td>
+        <td th:text="${user.password}  ">Password: </td>
+        <td th:text="${user.role}  ">role: </td>
+    </tr>
+</table>
 </body>
 </html>

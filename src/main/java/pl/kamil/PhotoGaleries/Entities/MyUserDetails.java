@@ -9,20 +9,38 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClientDetails implements UserDetails {
+public class MyUserDetails implements UserDetails {
 
-    private Client client;
+    private User user;
     private String customer_password;
     private List<GrantedAuthority> authorities ;
     private String login;
-    public ClientDetails(Client client) {
-        this.customer_password = client.getPassword();
-        this.authorities = Arrays.stream(client.getRole().split(","))
+    private String name;
+    public MyUserDetails(User user) {
+        this.customer_password = user.getPassword();
+        this.authorities = Arrays.stream(user.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-        this.login = client.getLogin();
+        this.login = user.getLogin();
+        this.name = user.getName();
+        this.user = user;
     }
 
+    public String getUser_name() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
