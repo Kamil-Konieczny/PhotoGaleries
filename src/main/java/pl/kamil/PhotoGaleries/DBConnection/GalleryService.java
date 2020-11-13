@@ -13,4 +13,8 @@ public class GalleryService {
     {
         galleryRepository.save(gallery);
     }
+    public void update(Gallery gallery)
+    {
+        galleryRepository.saveAndFlush(gallery);
+    }
 }

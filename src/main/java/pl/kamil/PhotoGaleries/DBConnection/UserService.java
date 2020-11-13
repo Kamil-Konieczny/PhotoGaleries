@@ -22,7 +22,7 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
+//
 //@PostConstruct
 //    public void fillDB()
 //    {

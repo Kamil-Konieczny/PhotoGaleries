@@ -79,9 +79,8 @@ public class MainController {
     @GetMapping("/showGallery")
     public String getClient(String clientName, Model model)
     {
-       User user2 =  userService.getAllClients().get(1);
         user = userService.findByName(clientName);
-        List<Photo> photos = user2.getGallery().getPhotos();
+        List<Photo> photos = user.getGallery().getPhotos();
 
         model.addAttribute("photosList",photos);
         model.addAttribute("clientName",clientName);
@@ -122,9 +121,9 @@ public class MainController {
         {
             Gallery gallery = user.getGallery();
            gallery.addPhoto(photo);
-            user.setGallery(gallery);
             photoService.savePhoto(photo);
-            userService.saveUser(user);
+            galleryService.update(gallery);
+
         }
         return "redirect:/admin";
     }
